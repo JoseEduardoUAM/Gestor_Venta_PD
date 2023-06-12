@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class Tablet extends Product{
     
-    private final String[] colors;
+    private String[] colors;
+
+    public Tablet(){}
 
     public Tablet(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored, String[] colors) {
         super(id, screen, model, processor, sensors, dimension, stored);
@@ -24,6 +26,14 @@ public class Tablet extends Product{
     @Override
     public String getSQLInsert(){
         return super.getSQLInsert() + String.format( " , '%s' " , Arrays.toString(colors));
+    }
+
+    public String[] getColors() {
+        return colors;
+    }
+
+    public void setColors(String[] colors) {
+        this.colors = colors;
     }
 
 }

@@ -2,8 +2,10 @@ package com.PD.Products;
 
 public class Family {
 
-  private final int id;
-  private final String name;
+  private int id;
+  private String name;
+
+    public Family(){ }
 
   public Family(int id, String name) {
       this.id = id;
@@ -17,5 +19,13 @@ public class Family {
   public String getName() {
       return name;
   }
+
+public void setId(int id) {
+    this.id = id;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
 
 }

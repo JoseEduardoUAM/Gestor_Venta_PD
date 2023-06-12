@@ -4,13 +4,16 @@ import java.util.Arrays;
 
 public abstract class Product{
     
-  private final int id;
-  private final String screen;
-  private final ModelProduct model;
-  private final String processor;
-  private final String[] sensors;
-  private final float[] dimension;
-  private final int stored;
+  private int id;
+  private String screen;
+  private ModelProduct model;
+  private String processor;
+  private String[] sensors;
+  private float[] dimension;
+  private int stored;
+
+  public Product(){
+  }
 
   public Product(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored) {
       this.id = id;
@@ -45,5 +48,57 @@ public abstract class Product{
   }
 
   public abstract String getTipo();
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getScreen() {
+    return screen;
+  }
+
+  public void setScreen(String screen) {
+    this.screen = screen;
+  }
+
+  public ModelProduct getModel() {
+    return model;
+  }
+
+  public void setModel(ModelProduct model) {
+    this.model = model;
+  }
+
+  public String getProcessor() {
+    return processor;
+  }
+
+  public void setProcessor(String processor) {
+    this.processor = processor;
+  }
+
+  public String[] getSensors() {
+    return sensors;
+  }
+
+  public void setSensors(String[] sensors) {
+    this.sensors = sensors;
+  }
+
+  public float[] getDimension() {
+    return dimension;
+  }
+
+  public void setDimension(float[] dimension) {
+    this.dimension = dimension;
+  }
+
+  public int getStored() {
+    return stored;
+  }
+
+  public void setStored(int stored) {
+    this.stored = stored;
+  }
 
 }

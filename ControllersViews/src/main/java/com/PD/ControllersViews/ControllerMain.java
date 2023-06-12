@@ -13,7 +13,7 @@ import com.PD.Proxys.TabletProxy;
 public class ControllerMain {
   
   @GetMapping("/")
-  public ModelAndView arreglo(){
+  public ModelAndView mostrarPrincipal(){
     ModelAndView mav = new ModelAndView("index");
     mav.addObject( "numbersSmartphone" , SmartphoneProxy.get().sizeProducts() );
     mav.addObject( "numbersTablets" , TabletProxy.get().sizeProducts() );
@@ -21,7 +21,5 @@ public class ControllerMain {
     mav.addObject( "numbersSmartTV" , SmartTVProxy.get().sizeProducts() );
     return mav;
   }
-
-
   
 }

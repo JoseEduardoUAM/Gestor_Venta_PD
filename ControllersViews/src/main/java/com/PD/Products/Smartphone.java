@@ -4,8 +4,11 @@ import java.util.Arrays;
 
 public class Smartphone extends Product{
     
-    private final String[] colors;
-    private final int numberSIM;
+    private String[] colors;
+    private int numberSIM;
+
+    public Smartphone(){
+    }
 
     public Smartphone(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored, String[] colors, int numberSIM) {
         super(id, screen, model, processor, sensors, dimension, stored);
@@ -26,6 +29,22 @@ public class Smartphone extends Product{
     @Override
     public String getSQLInsert(){
         return super.getSQLInsert() + String.format( ", '%s' , '%d' " , Arrays.toString(this.colors) , this.numberSIM);
+    }
+
+    public String[] getColors() {
+        return colors;
+    }
+
+    public void setColors(String[] colors) {
+        this.colors = colors;
+    }
+
+    public int getNumberSIM() {
+        return numberSIM;
+    }
+
+    public void setNumberSIM(int numberSIM) {
+        this.numberSIM = numberSIM;
     }
 
 }

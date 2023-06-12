@@ -6,6 +6,8 @@ public class ModelProduct{
   private String name;
   private Family family;
 
+  public ModelProduct(){ }
+
   public ModelProduct(int id, String name, Family family) {
       this.id = id;
       this.name = name;
@@ -23,5 +25,17 @@ public class ModelProduct{
   public Family getFamily() {
       return family;
   }
+
+public void setId(int id) {
+    this.id = id;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public void setFamily(Family family) {
+    this.family = family;
+}
   
 }

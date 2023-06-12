@@ -5,16 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.PD.Products.ModelProduct;
-import com.PD.Products.SmartTV;
-import com.PD.Products.Smartphone;
-import com.PD.Products.Smartwatch;
-import com.PD.Products.Tablet;
-import com.PD.Proxys.ModelProxy;
-import com.PD.Proxys.SmartTVProxy;
-import com.PD.Proxys.SmartphoneProxy;
-import com.PD.Proxys.SmartwatchProxy;
-import com.PD.Proxys.TabletProxy;
+import com.PD.Products.*;
+import com.PD.Proxys.*;
+import com.PD.Records.*;
 
 @RestController
 public class RestControllerProducts {
@@ -61,13 +54,7 @@ public class RestControllerProducts {
 
 }
 
-record ResponseMessage( int status , String message ){}
 
 
-record RequestSmartphone( int id , String screen , int model , String processor , String[] sensors , float[] dimension , int stored , String[] colors , int numberSIM ){}
 
-record RequestSmartTV( int id , String screen , int model , String processor , String[] sensors , float[] dimension , int stored , float weight ){}
 
-record RequestTablet( int id , String screen , int model , String processor , String[] sensors , float[] dimension , int stored , String[] colors ){}
-
-record RequestTSmartwatch( int id , String screen , int model , String processor , String[] sensors , float[] dimension , int stored ){ }

@@ -12,6 +12,7 @@ import com.PD.Proxys.SmartTVProxy;
 import com.PD.Proxys.SmartphoneProxy;
 import com.PD.Proxys.SmartwatchProxy;
 import com.PD.Proxys.TabletProxy;
+import com.PD.Records.*;
 
 @RestController
 public class RestControllerInventory {
@@ -37,7 +38,3 @@ public class RestControllerInventory {
 	}
 
 }
-
-record ResponseMessage( int status , String message ){}
-
-record RequestInventory(int idInventory, int state, int product, float price , String[] factoryError , int typeProduct){}

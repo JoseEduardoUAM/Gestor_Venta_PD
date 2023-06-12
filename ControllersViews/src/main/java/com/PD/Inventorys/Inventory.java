@@ -17,6 +17,8 @@ public class Inventory {
   private float price;
   private String[] factoryError;
 
+  public Inventory(){ }
+
   public Inventory(int idInventory, State state, Product product, float price , String[] factoryError) {
     this.idInventory = idInventory;
     this.state = state;
@@ -64,5 +66,33 @@ public class Inventory {
     else if( this.product instanceof Tablet ) return String.format( " 0 , %d ,0 , 0 , %d , 0 , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
     else return String.format( " 0 , %d , 0 , 0 , 0 , %d , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
 }
+
+  public void setIdInventory(int idInventory) {
+    this.idInventory = idInventory;
+  }
+
+  public void setState(State state) {
+    this.state = state;
+  }
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  public void setFactoryError(String[] factoryError) {
+    this.factoryError = factoryError;
+  }
+
+  public Product getProduct() {
+    return product;
+  }
+
+  public String[] getFactoryError() {
+    return factoryError;
+  }
 
 }
