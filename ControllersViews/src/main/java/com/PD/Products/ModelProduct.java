@@ -6,13 +6,15 @@ public class ModelProduct{
   private String name;
   private Family family;
 
-  public ModelProduct(){ }
-
   public ModelProduct(int id, String name, Family family) {
       this.id = id;
       this.name = name;
       this.family = family;
   }
+
+    public ModelProduct(){ 
+        this( 0 , "" , new Family() );
+    }
 
   public int getId() {
       return id;

@@ -8,6 +8,8 @@ public class Smartphone extends Product{
     private int numberSIM;
 
     public Smartphone(){
+        super();
+        this.colors = new String[]{};
     }
 
     public Smartphone(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored, String[] colors, int numberSIM) {

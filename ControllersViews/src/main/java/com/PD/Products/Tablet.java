@@ -6,11 +6,14 @@ public class Tablet extends Product{
     
     private String[] colors;
 
-    public Tablet(){}
-
     public Tablet(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored, String[] colors) {
         super(id, screen, model, processor, sensors, dimension, stored);
         this.colors = colors;
+    }
+
+    public Tablet(){
+        super();
+        this.colors = new String[]{};
     }
 
     @Override

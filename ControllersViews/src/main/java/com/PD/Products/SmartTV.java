@@ -4,11 +4,14 @@ public class SmartTV extends Product{
     
   private float weight;
 
-  public SmartTV(){}
-
   public SmartTV(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored , float weight) {
       super(id, screen, model, processor, sensors, dimension, stored);
       this.weight = weight;
+  }
+
+  public SmartTV(){
+    super();
+    this.weight = 0;
   }
 
   @Override

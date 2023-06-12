@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.PD.Products.ModelProduct;
 import com.PD.Products.Smartphone;
 import com.PD.Proxys.ModelProxy;
 import com.PD.Proxys.SmartphoneProxy;
@@ -19,7 +18,7 @@ public class ControllerFormSmartphone {
     
     @GetMapping("/Formularios/Smartphone")
     public String mostrarFormulario( Model model ){
-        model.addAttribute( "Smartphone" ,  new Smartphone(0, "", new ModelProduct(0, null, null), "", new String[]{}, new float[]{ 0 , 0 , 0 }, 0, new String[]{}, 0) );        
+        model.addAttribute( "Smartphone" ,  new Smartphone() );        
         model.addAttribute( "modelos" ,  ModelProxy.get().getAll() );
         return "Formularios/Smartphone";
     }

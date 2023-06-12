@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.PD.Products.ModelProduct;
 import com.PD.Products.Tablet;
 import com.PD.Proxys.ModelProxy;
 import com.PD.Proxys.TabletProxy;
@@ -19,7 +18,7 @@ public class ControllerFormTablet {
     
     @GetMapping("/Formularios/Tablet")
     public String mostrarFormulario( Model model ){
-        model.addAttribute( "Tablet" ,  new Tablet(0, null, new ModelProduct(), null, new String[]{}, new float[]{ 0 , 0 , 0 }, 0, new String[]{}) );        
+        model.addAttribute( "Tablet" ,  new Tablet() );        
         model.addAttribute( "modelos" ,  ModelProxy.get().getAll() );
         return "Formularios/Tablet";
     }

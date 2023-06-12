@@ -17,8 +17,6 @@ public class Inventory {
   private float price;
   private String[] factoryError;
 
-  public Inventory(){ }
-
   public Inventory(int idInventory, State state, Product product, float price , String[] factoryError) {
     this.idInventory = idInventory;
     this.state = state;
@@ -29,6 +27,10 @@ public class Inventory {
   
   public Inventory(int idInventory, Product product, float price , String[] factoryError){
     this( idInventory , Stored.get() , product , price , factoryError );
+  }
+
+  public Inventory(){
+    this( 0 , Stored.get() , new Smartphone() , 0 , new String[]{} );
   }
 
   public int getIdInventory() {

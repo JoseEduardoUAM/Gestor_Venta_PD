@@ -12,9 +12,6 @@ public abstract class Product{
   private float[] dimension;
   private int stored;
 
-  public Product(){
-  }
-
   public Product(int id, String screen, ModelProduct model, String processor, String[] sensors, float[] dimension, int stored) {
       this.id = id;
       this.screen = screen;
@@ -23,6 +20,10 @@ public abstract class Product{
       this.sensors = sensors;
       this.dimension = dimension;
       this.stored = stored;
+  }
+
+  public Product(){
+    this( 0 , "" , new ModelProduct() , "" , new String[]{} , new float[]{ 0 , 0 , 0 } , 0 );
   }
 
   public int getId() {

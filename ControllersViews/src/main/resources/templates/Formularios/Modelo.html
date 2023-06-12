@@ -12,7 +12,7 @@
 <body>
 
     <!-- Navegacion de la pagina web -->
-    <nav th:replace="Plantillas/Base :: nav"></nav>
+    <nav th:replace="~{Plantillas/Base :: nav}"></nav>
 
     <!-- Formulario -->
     <form class="container" action="" method="post" th:action="@{/Formularios/Modelo}" th:object="${Modelo}">
