@@ -15,18 +15,18 @@
     <nav th:replace="~{Plantillas/Base :: nav}"></nav>
 
     <!-- Formulario -->
-    <form class="container" action="" method="post" th:action="@{/Formularios/Modelo}" th:object="${Modelo}">
+    <form class="container" action="" method="post" th:action="@{/Formularios/Modelo}">
 
         <h1 class="mb-2 mt-3">Agregar una nuevo Modelo</h1>
 
         <div class="mb-3">
             <label for="name" class="form-label">Proporcione el nombre</label>
-            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Nombre del modelo">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del modelo">
         </div>
 
         <div class="mb-3">
-            <label for="idFamilia"></label>            
-            <select th:field="*{family.id}" id="idFamilia">
+            <label for="Familia"></label>            
+            <select id="Familia" name="idFamilia">
                 <option th:each="familia : ${familias}" th:value="${familia.id}" th:text="${familia.name}"></option>
             </select>
         </div>

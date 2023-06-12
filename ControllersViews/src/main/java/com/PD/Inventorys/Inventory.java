@@ -10,27 +10,19 @@ import com.PD.States.*;
 import com.PD.States.Stored;
 
 public class Inventory {
-  
+
   private int idInventory;
   private State state;
   private Product product;
   private float price;
   private String[] factoryError;
 
-  public Inventory(int idInventory, State state, Product product, float price , String[] factoryError) {
+  public Inventory(int idInventory, State state, Product product, float price, String[] factoryError) {
     this.idInventory = idInventory;
     this.state = state;
     this.product = product;
     this.price = price;
     this.factoryError = factoryError;
-  }
-  
-  public Inventory(int idInventory, Product product, float price , String[] factoryError){
-    this( idInventory , Stored.get() , product , price , factoryError );
-  }
-
-  public Inventory(){
-    this( 0 , Stored.get() , new Smartphone() , 0 , new String[]{} );
   }
 
   public int getIdInventory() {
@@ -45,7 +37,7 @@ public class Inventory {
     return product.getCaracteristicas();
   }
 
-  public String getFactoryErrors(){
+  public String getFactoryErrors() {
     return Arrays.toString(this.factoryError);
   }
 
@@ -53,48 +45,36 @@ public class Inventory {
     return state.getState();
   }
 
-  public float getPrice(){
+  public float getPrice() {
     return price;
   }
 
-  public String getSQLInsert(){
+  public String getSQLInsert() {
     int idState;
-    if( this.state instanceof Stored ) idState = 1;
-    else if( this.state instanceof Devolution ) idState = 2;
-    else if( this.state instanceof Reparacion ) idState = 3;
-    else idState = 4;
-    if( this.product instanceof Smartphone ) return String.format( " 0 , %d , %d , 0 , 0 , 0 , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
-    else if( this.product instanceof Smartwatch ) return String.format( " 0 , %d , 0 , %d , 0 , 0 , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
-    else if( this.product instanceof Tablet ) return String.format( " 0 , %d ,0 , 0 , %d , 0 , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
-    else return String.format( " 0 , %d , 0 , 0 , 0 , %d , %.3f , '%s' " , idState , product.getId() , price , Arrays.toString(factoryError) );
-}
-
-  public void setIdInventory(int idInventory) {
-    this.idInventory = idInventory;
-  }
-
-  public void setState(State state) {
-    this.state = state;
+    if (this.state instanceof Stored)
+      idState = 1;
+    else if (this.state instanceof Devolution)
+      idState = 2;
+    else if (this.state instanceof Reparacion)
+      idState = 3;
+    else
+      idState = 4;
+    if (this.product instanceof Smartphone)
+      return String.format(" 0 , %d , %d , 0 , 0 , 0 , %.3f , '%s' ", idState, product.getId(), price,
+          Arrays.toString(factoryError));
+    else if (this.product instanceof Smartwatch)
+      return String.format(" 0 , %d , 0 , %d , 0 , 0 , %.3f , '%s' ", idState, product.getId(), price,
+          Arrays.toString(factoryError));
+    else if (this.product instanceof Tablet)
+      return String.format(" 0 , %d ,0 , 0 , %d , 0 , %.3f , '%s' ", idState, product.getId(), price,
+          Arrays.toString(factoryError));
+    else
+      return String.format(" 0 , %d , 0 , 0 , 0 , %d , %.3f , '%s' ", idState, product.getId(), price,
+          Arrays.toString(factoryError));
   }
 
   public void setProduct(Product product) {
     this.product = product;
-  }
-
-  public void setPrice(float price) {
-    this.price = price;
-  }
-
-  public void setFactoryError(String[] factoryError) {
-    this.factoryError = factoryError;
-  }
-
-  public Product getProduct() {
-    return product;
-  }
-
-  public String[] getFactoryError() {
-    return factoryError;
   }
 
 }

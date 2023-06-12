@@ -11,9 +11,9 @@ public class Tablet extends Product{
         this.colors = colors;
     }
 
-    public Tablet(){
-        super();
-        this.colors = new String[]{};
+    public Tablet( int id ){
+        super( id );
+        this.colors = null;
     }
 
     @Override

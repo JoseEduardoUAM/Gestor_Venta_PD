@@ -15,12 +15,13 @@
     <nav th:replace="~{Plantillas/Base :: nav}"></nav>
 
     <!-- Formulario -->
-    <form class="container mb-3" action="" method="post" th:action="@{/Formularios/Tablet}" th:object="${Tablet}">
+    <form class="container mb-3" action="" method="post" th:action="@{/Formularios/Tablet}" >
         
         <h1 class="mb-2 mt-3">Agregar una Nueva Tablet</h1>
+
         <div class="mb-4">
             <label for="tipoPantalla" class="form-label">Seleccione el tipo de pantalla</label>
-            <select id="tipoPantalla" class="form-select form-select-sm" th:field="*{screen}">
+            <select id="tipoPantalla" class="form-select form-select-sm" name="screen">
                 <option value="Pantalla 1">Pantalla 1</option>
                 <option value="Pantalla 2">Pantalla 2</option>
                 <option value="Pantalla 3">Pantalla 3</option>
@@ -30,14 +31,14 @@
 
         <div class="mb-4">
             <label for="idModelo" class="form-label">Seleccione el modelo</label>
-            <select class="form-select form-select-sm" id="idModelo" th:field="*{model.id}">
+            <select class="form-select form-select-sm" id="idModelo" name="idModelo">
                 <option th:each="modelo : ${modelos}" th:value="${modelo.id}" th:text="${modelo.name}"></option>
             </select>
         </div>
 
         <div class="mb-4">
             <label for="idProcesador" class="form-label">Seleccione el procesador</label>
-            <select class="form-select form-select-sm" id="idProcesador" th:field="*{processor}">
+            <select class="form-select form-select-sm" id="idProcesador" name="procesador">
                 <option value="Procesador 1">Procesador 1</option>
                 <option value="Procesador 2">Procesador 2</option>
                 <option value="Procesador 3">Procesador 3</option>
@@ -47,7 +48,7 @@
 
         <div class="mb-4">
             <label for="sensores" class="form-label">Seleccione los sensores</label>
-            <select class="form-select form-select-sm" id="sensores" th:field="*{sensors}" multiple>
+            <select class="form-select form-select-sm" id="sensores" name="sensores" multiple>
                 <option value="Sensor 1">Sensor 1</option>
                 <option value="Sensor 2">Sensor 2</option>
                 <option value="Sensor 3">Sensor 3</option>
@@ -57,19 +58,19 @@
 
         <label class="form-label">Indique las dimenciones del dispositivo</label>
         <div class="input-group mb-4">
-            <input type="text" class="form-control" placeholder="Largo" th:field="*{dimension[0]}">
-            <input type="text" class="form-control" placeholder="Ancho" th:field="*{dimension[1]}">
-            <input type="text" class="form-control" placeholder="Alto" th:field="*{dimension[2]}">
+            <input type="text" class="form-control" placeholder="Largo" name="alto">
+            <input type="text" class="form-control" placeholder="Ancho" name="ancho">
+            <input type="text" class="form-control" placeholder="Alto" name="largo">
         </div>
 
         <div class="mb-3">
             <label for="almacenamiento" class="form-label">Indique el tamaño de almacenamiento</label>
-            <input type="text" class="form-control" id="almacenamiento" th:field="*{stored}">
+            <input type="text" class="form-control" id="almacenamiento" name="stored">
         </div>
 
         <div class="mb-4">
             <label for="colores" class="form-label">Seleccione los colores</label>
-            <select class="form-select form-select-sm" id="colores" th:field="*{colors}" multiple>
+            <select class="form-select form-select-sm" id="colores" name="colors" multiple>
                 <option value="Rojo">Rojo</option>
                 <option value="Azul">Azul</option>
                 <option value="Negro">Negro</option>

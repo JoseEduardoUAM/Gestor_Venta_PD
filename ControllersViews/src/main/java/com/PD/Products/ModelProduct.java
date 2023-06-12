@@ -2,9 +2,9 @@ package com.PD.Products;
 
 public class ModelProduct{
 
-  private int id;
-  private String name;
-  private Family family;
+  private final int id;
+  private final String name;
+  private final Family family;
 
   public ModelProduct(int id, String name, Family family) {
       this.id = id;
@@ -12,9 +12,9 @@ public class ModelProduct{
       this.family = family;
   }
 
-    public ModelProduct(){ 
-        this( 0 , "" , new Family() );
-    }
+  public ModelProduct( int id ){
+    this( id , null , null );
+  }
 
   public int getId() {
       return id;
@@ -27,17 +27,5 @@ public class ModelProduct{
   public Family getFamily() {
       return family;
   }
-
-public void setId(int id) {
-    this.id = id;
-}
-
-public void setName(String name) {
-    this.name = name;
-}
-
-public void setFamily(Family family) {
-    this.family = family;
-}
   
 }

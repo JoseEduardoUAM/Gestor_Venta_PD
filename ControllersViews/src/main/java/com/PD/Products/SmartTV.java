@@ -9,8 +9,8 @@ public class SmartTV extends Product{
       this.weight = weight;
   }
 
-  public SmartTV(){
-    super();
+  public SmartTV( int id ){
+    super( id );
     this.weight = 0;
   }
 
@@ -27,14 +27,6 @@ public class SmartTV extends Product{
   @Override
   public String getSQLInsert(){
       return super.getSQLInsert() + String.format( " , %.2f " , this.weight);
-  }
-
-  public float getWeight() {
-    return weight;
-  }
-
-  public void setWeight(float weight) {
-    this.weight = weight;
   }
 
 }

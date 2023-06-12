@@ -22,8 +22,8 @@ public abstract class Product{
       this.stored = stored;
   }
 
-  public Product(){
-    this( 0 , "" , new ModelProduct() , "" , new String[]{} , new float[]{ 0 , 0 , 0 } , 0 );
+  public Product( int id ){
+    this(id, null, null, null, null, null, 0);
   }
 
   public int getId() {
@@ -49,57 +49,5 @@ public abstract class Product{
   }
 
   public abstract String getTipo();
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getScreen() {
-    return screen;
-  }
-
-  public void setScreen(String screen) {
-    this.screen = screen;
-  }
-
-  public ModelProduct getModel() {
-    return model;
-  }
-
-  public void setModel(ModelProduct model) {
-    this.model = model;
-  }
-
-  public String getProcessor() {
-    return processor;
-  }
-
-  public void setProcessor(String processor) {
-    this.processor = processor;
-  }
-
-  public String[] getSensors() {
-    return sensors;
-  }
-
-  public void setSensors(String[] sensors) {
-    this.sensors = sensors;
-  }
-
-  public float[] getDimension() {
-    return dimension;
-  }
-
-  public void setDimension(float[] dimension) {
-    this.dimension = dimension;
-  }
-
-  public int getStored() {
-    return stored;
-  }
-
-  public void setStored(int stored) {
-    this.stored = stored;
-  }
 
 }

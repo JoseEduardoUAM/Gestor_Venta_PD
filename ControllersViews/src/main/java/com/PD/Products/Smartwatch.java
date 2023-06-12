@@ -6,8 +6,8 @@ public class Smartwatch extends Product{
       super(id, screen, model, processor, sensors, dimension, stored);
   }
 
-  public Smartwatch(){
-    super();
+  public Smartwatch( int id ){
+    super( id );
   }
 
   @Override
