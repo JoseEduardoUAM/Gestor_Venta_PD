@@ -31,7 +31,7 @@ public class ControllerInventorySmartTV {
   @PostMapping("/Inventario/SmartTV")
   public ModelAndView showSmartphoneResultado(@RequestParam("idProduct") int idProduct,
       @RequestParam("precio") float precio, @RequestParam("estado") int estado,
-      @RequestParam("erroresFabrica") String[] erroresFabrica) {
+      @RequestParam( name = "erroresFabrica" , required = false ) String[] erroresFabrica) {
     State state;
     if (estado == 2) state = Devolution.get();
     else if (estado == 3) state = Reparacion.get();

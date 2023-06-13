@@ -14,10 +14,182 @@
     <!-- Navegacion de la pagina web -->
     <nav th:replace="~{Plantillas/Base :: nav}"></nav>
 
+    <div class="container mt-3">
+        <h2>Tipo de Productos Registrados</h2>
+    </div>
+    <div class="container text-center">
+        <div class="row align-items-center">
+            <div class="col m-2 p-5" style="background-color: rgb(131, 173, 210); border-radius: 5px;">
+                <h3 th:text="${NumeroSmartphone}"></h3>
+                <h4>Smartphone</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(230, 167, 216); border-radius: 5px;">
+                <h3 th:text="${NumeroSmartTV}"></h3>
+                <h4>SmartTV</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(233, 219, 167); border-radius: 5px;">
+                <h3 th:text="${NumeroSmartwatch}"></h3>
+                <h4>Smartwatch</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(182, 223, 167); border-radius: 5px;">
+                <h3 th:text="${NumeroTablet}"></h3>
+                <h4>Tablets</h4>
+            </div>
+          </div>
+    </div>
+
+    <div class="container mt-3">
+        <h2>Productos en Inventario</h2>
+    </div>
+    <div class="container text-center">
+        <div class="row align-items-center">
+            <div class="col m-2 p-5" style="background-color: rgb(131, 173, 210); border-radius: 5px;">
+                <h3 th:text="${NoSmartphoneInventario}"></h3>
+                <h4>Smartphone</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(230, 167, 216); border-radius: 5px;">
+                <h3 th:text="${NoSmartTVInventario}"></h3>
+                <h4>SmartTV</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(233, 219, 167); border-radius: 5px;">
+                <h3 th:text="${NoSmartwatchInventario}"></h3>
+                <h4>Smartwatch</h4>
+            </div>
+            <div class="col m-2 p-5" style="background-color: rgb(182, 223, 167); border-radius: 5px;">
+                <h3 th:text="${NoTabletInventario}"></h3>
+                <h4>Tablets</h4>
+            </div>
+          </div>
+    </div>
+
+    <div class="container mt-4 mb-5">
+        <div class="row justify-content-md-center" style="height: 400px;">
+            <canvas id="GraficaLineal"></canvas>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-md-center" style="height: 400px;">
+            <canvas id="GraficaPastel"></canvas>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-md-center" style="height: 400px;">
+            <canvas id="GraficaBarras"></canvas>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        let lineal = document.getElementById('GraficaLineal')
+        let pastel = document.getElementById('GraficaPastel')
+        let barras = document.getElementById('GraficaBarras')
+
+        fetch( '/obtenerEstadisticas' , { method : 'POST' })
+        .then( result => result.json() )
+        .then( result => {
+            console.log( result.productos );
+            console.log( result.productosEF );
+
+            let GraficaLineal = new Chart(lineal, {
+            type: 'line',
+            data: {
+                labels: ["Smartphones", "SmartTVs", "Smartwats", "Tablets"],
+                datasets: [
+                    {
+                        label: 'Productos Defectuosos',
+                        data: result.productosEF,
+                        fill: false,
+                        borderColor: 'rgb(131, 173, 210)'
+                    },
+                    {
+                        label: 'Productos en Invenatrio',
+                        data: result.productos,
+                        fill: false,
+                        borderColor: 'rgb(230, 167, 216)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Grafica comparativa de productos con defectos de fabrica'
+                    }
+                }
+            },
+        })
+
+        let GraficaPastel = new Chart(pastel, {
+            type: 'pie',
+            data: {
+                labels: ["Smartphones", "SmartTVs", "Smartwats", "Tablets"],
+                datasets: [
+                    {
+                        label: "No. de Productos",
+                        data: result.productos,
+                        backgroundColor: ["rgb(131, 173, 210)", "rgb(230, 167, 216)", "rgb(233, 219, 167)", "rgb(182, 223, 167)"],
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Productos en Inventario'
+                    }
+                }
+            }
+        })
+
+        let GraficasBarras = new Chart(barras, {
+            type: 'bar',
+            data: {
+                labels: ["Smartphones", "SmartTVs", "Smartwats", "Tablets"],
+                datasets: [
+                    {
+                        label: "No. de Productos",
+                        data: result.productos,
+                        backgroundColor: "rgb(131, 173, 210)",
+                    },
+                    {
+                        label: "No. de Productos Defectuosos",
+                        data: result.productosEF,
+                        backgroundColor: "rgb(230, 167, 216)",
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Grafica de Barras'
+                    }
+                }
+            }
+        })
+
+
+        }).catch( error => console.log( error ) )
+    </script>
 </body>
 
 </html>

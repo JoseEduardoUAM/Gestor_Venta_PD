@@ -37,8 +37,12 @@ public class Inventory {
     return product.getCaracteristicas();
   }
 
-  public String getFactoryErrors() {
-    return Arrays.toString(this.factoryError);
+  public String[] getFactoryErrors() {
+    return this.factoryError;
+  }
+
+  public String getStringFE(){
+    return Arrays.toString(factoryError);
   }
 
   public String getState() {
@@ -75,6 +79,10 @@ public class Inventory {
 
   public void setProduct(Product product) {
     this.product = product;
+  }
+
+  public Product getProduct(){
+    return this.product;
   }
 
 }

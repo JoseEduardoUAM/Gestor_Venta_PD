@@ -37,7 +37,7 @@ public class TabletDAO implements Proxy {
             ModelProxy mp = ModelProxy.get();
             while( result.next() ){
                 tablets.add( 
-                    new Tablet( result.getInt(1) , result.getString(2) , mp.getModel( result.getInt(3) ) , result.getString(4) , result.getString(5).split("\\[|\\]|\\,") , FuntionUtil.getArrayFloat(result.getString(6)) , result.getInt(7) , result.getString(8).split("\\[|\\]|,") )
+                    new Tablet( result.getInt(1) , result.getString(2) , mp.getModel( result.getInt(3) ) , result.getString(4) , result.getString(5).replaceAll("\\[", "").replaceAll("]", "").split(",") , FuntionUtil.getArrayFloat(result.getString(6)) , result.getInt(7) , result.getString(8).replaceAll("\\[", "").replaceAll("]", "").split(",") )
                 );
             }
         } catch (Exception e) {

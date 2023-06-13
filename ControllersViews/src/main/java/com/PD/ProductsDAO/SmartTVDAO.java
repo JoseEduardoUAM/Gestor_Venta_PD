@@ -37,7 +37,7 @@ public class SmartTVDAO implements Proxy{
           ModelProxy mp = ModelProxy.get();
           while( result.next() ){
               smarttvs.add( 
-                  new SmartTV( result.getInt(1) , result.getString(2) , mp.getModel( result.getInt(3) ) , result.getString(4) , result.getString(5).split("\\[|\\]|,") , FuntionUtil.getArrayFloat(result.getString(6)) , result.getInt(7) , result.getFloat(8) )
+                  new SmartTV( result.getInt(1) , result.getString(2) , mp.getModel( result.getInt(3) ) , result.getString(4) , result.getString(5).replaceAll("\\[", "").replaceAll("]", "").split(",") , FuntionUtil.getArrayFloat(result.getString(6)) , result.getInt(7) , result.getFloat(8) )
               );
           }
       } catch (Exception e) {

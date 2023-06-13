@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.PD.DataBase.Connect;
+import com.PD.FunctionsUtils.FuntionUtil;
+import com.PD.Products.ModelProduct;
 import com.PD.Products.Product;
 import com.PD.Products.Smartwatch;
 import com.PD.Proxys.Proxy;
@@ -34,7 +36,7 @@ public class SmartwatchDAO implements Proxy{
           ResultSet result = conn.iniciarConexion().createStatement().executeQuery("SELECT * FROM Smartwatch");
           while( result.next() ){
               smartwatchs.add( 
-                  new Smartwatch( result.getInt(1) , result.getString(2) , null , result.getString(4) , null , null , result.getInt(7) )
+                  new Smartwatch( result.getInt(1) , result.getString(2) , new ModelProduct( result.getInt(3) ) , result.getString(4) , result.getString(5).replaceAll("\\[", "").replaceAll("]", "").split(",") , FuntionUtil.getArrayFloat(result.getString(6)) , result.getInt(7) )
               );
           }
       } catch (Exception e) {
